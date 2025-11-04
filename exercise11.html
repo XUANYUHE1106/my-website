@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正方形與圓形</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    canvas {
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="art" width="600" height="320"></canvas>
+  <script>
+    const canvas = document.getElementById('art');
+    const ctx = canvas.getContext('2d');
+
+    // 藍色正方形
+    const squareSize = 200;
+    const squareX = 100;
+    const squareY = 60;
+    ctx.fillStyle = "blue";
+    ctx.fillRect(squareX, squareY, squareSize, squareSize);
+
+    // 黃色圓形（蓋住一半正方形）
+    const radius = squareSize / 2;
+    const centerX = squareX + squareSize;
+    const centerY = squareY + squareSize / 2;
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+  </script>
+</body>
