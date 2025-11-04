@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>正方形與圓形</title>
+  <title>藍色正方形與黃色圓形（含邊框）</title>
   <style>
     body {
       display: flex;
@@ -32,14 +32,19 @@
     const canvas = document.getElementById('art');
     const ctx = canvas.getContext('2d');
 
-    // 藍色正方形
+    // --- 藍色正方形 ---
     const squareSize = 200;
     const squareX = 100;
     const squareY = 60;
     ctx.fillStyle = "blue";
     ctx.fillRect(squareX, squareY, squareSize, squareSize);
 
-    // 黃色圓形（蓋住一半正方形）
+    // 黑色邊框
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 3;
+    ctx.strokeRect(squareX, squareY, squareSize, squareSize);
+
+    // --- 黃色圓形 ---
     const radius = squareSize / 2;
     const centerX = squareX + squareSize;
     const centerY = squareY + squareSize / 2;
@@ -47,5 +52,11 @@
     ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
     ctx.fillStyle = "yellow";
     ctx.fill();
+
+    // 紅色邊框
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 3;
+    ctx.stroke();
   </script>
 </body>
+</html>
