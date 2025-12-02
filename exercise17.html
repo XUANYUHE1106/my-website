@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 17: Three Layouts RWD</title>
+    <style>
+        body { background-color: #ADD8E6; margin: 0; }
+        .container { max-width: 800px; margin: 20px auto; border: 5px solid white; }
+        .header { background-color: #90EE90; padding: 30px; margin: 10px; text-align: center; }
+
+        .content-wrapper { display: flex; margin: 10px; }
+        .content-box {
+            background-color: #00BCD4; padding: 40px 10px;
+            margin-right: 10px; width: 33.33%; /* 1/3 寬度 */
+            box-sizing: border-box; color: white; text-align: center;
+        }
+        .content-box:last-child { margin-right: 0; }
+        .footer-wrapper { display: flex; margin: 10px; margin-top: 0; }
+        .footer-box {
+            background-color: #F0F0F0; padding: 20px 10px;
+            margin-right: 10px; width: 25%; /* 1/4 寬度 */
+            box-sizing: border-box; text-align: center;
+        }
+        .footer-box:last-child { margin-right: 0; }
+        @media screen and (min-width: 500px) and (max-width: 719px) {
+            
+            .content-wrapper, .footer-wrapper {
+                flex-wrap: wrap; 
+            }
+            .content-box {
+                width: calc(50% - 5px); /* 50% 減去部分 margin */
+                margin-bottom: 10px; /* 增加行間距 */
+            }
+            .content-box:nth-child(2) {
+                margin-right: 0; /* 確保 C2 在行尾 */
+            }
+
+            .content-box:nth-child(3) {
+                width: 100%;
+                margin-right: 0; 
+            }
+
+            .footer-box {
+                width: calc(50% - 5px); /* 50% 減去部分 margin */
+                margin-bottom: 10px;
+            }
+
+            .footer-box:nth-child(2n) {
+                margin-right: 0; 
+            }
+        }
+
+        @media screen and (max-width: 499px) {
+            
+            /* 內容區塊堆疊 */
+            .content-wrapper { flex-direction: column; } 
+            .content-box { 
+                width: 100%; 
+                margin-right: 0; 
+                margin-bottom: 10px;
+            }
+            .content-box:last-child { margin-bottom: 0; }
+            
+            /* 底部區塊堆疊 */
+            .footer-wrapper { flex-direction: column; }
+            .footer-box { 
+                width: 100%; 
+                margin-right: 0; 
+                margin-bottom: 10px; 
+            }
+            .footer-box:last-child { margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">H</div>
+        <div class="content-wrapper">
+            <div class="content-box">C1</div>
+            <div class="content-box">C2</div>
+            <div class="content-box">C3</div>
+        </div>
+        <div class="footer-wrapper">
+            <div class="footer-box">F1</div>
+            <div class="footer-box">F2</div>
+            <div class="footer-box">F3</div>
+            <div class="footer-box">F4</div>
+        </div>
+    </div>
+</body>
+</html>
